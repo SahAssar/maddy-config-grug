@@ -1,0 +1,9 @@
+[Unit]
+Description=maddy config generation and reload
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl reload-or-try-restart maddy
+
+[Install]
+WantedBy=multi-user.target
