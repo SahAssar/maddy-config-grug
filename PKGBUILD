@@ -10,12 +10,14 @@ arch=('any')
 pkgdesc="Maddy config for grug"
 url="https://git.grug.se/admin/maddy-config-grug"
 license=('MIT')
-depends=('maddy' 'server-config-grug')
 makedepends=()
 provides=()
 conflicts=()
 install="script.install"
 package() {
+  depends+=(maddy)
+  depends+=(server-config-grug)
+
   mkdir -p "$pkgdir/etc/systemd/system/maddy.service.d"
   cp override.conf "$pkgdir/etc/systemd/system/maddy.service.d/"
   cp maddy-reload.path "$pkgdir/etc/systemd/system/"
